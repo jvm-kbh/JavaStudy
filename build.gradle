@@ -18,6 +18,14 @@ repositories {
 dependencies {
     implementation 'org.springframework.boot:spring-boot-starter'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    implementation 'org.openjdk.jmh:jmh-core:1.31'
+    annotationProcessor 'org.openjdk.jmh:jmh-generator-annprocess:1.31'
+}
+
+jar {
+    manifest {
+        attributes 'Main-Class': 'org.openjdk.jmh.Main'
+    }
 }
 
 tasks.named('test') {
