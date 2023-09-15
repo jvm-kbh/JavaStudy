@@ -18,8 +18,14 @@ repositories {
 dependencies {
     implementation 'org.springframework.boot:spring-boot-starter'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
+
+    //jmh
     implementation 'org.openjdk.jmh:jmh-core:1.31'
     annotationProcessor 'org.openjdk.jmh:jmh-generator-annprocess:1.31'
+
+    //lombok
+    //compileOnly 'org.projectlombok:lombok'
+    //annotationProcessor 'org.projectlombok:lombok'
 }
 
 jar {

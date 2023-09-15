@@ -1,4 +1,4 @@
-package me.kbh.javastudy.basic.ch03;
+package me.kbh.javastudy.basic.ch08;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -16,7 +16,7 @@ public class ExecuteAroundPattern {
     //한 줄만 불러오는 코드를 변경하려면 다양하게 변경하려면 함수 인터페이스를 아규먼트로 전달받을 수 있도록 구성해야한다
     public static String processFile(BufferedReaderProcessor p) throws IOException {
         try(BufferedReader br = new BufferedReader(new FileReader("data.txt"))) {
-            return br.readLine();
+            return p.process(br);
         }
     }
 
