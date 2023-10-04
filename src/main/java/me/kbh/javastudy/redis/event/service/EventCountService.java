@@ -1,4 +1,4 @@
-package me.kbh.javastudy.redis.service;
+package me.kbh.javastudy.redis.event.service;
 
 public interface EventCountService {
     void increaseEventPageCount(int pageId);

@@ -1,9 +1,9 @@
-package me.kbh.javastudy.redis.presentation;
+package me.kbh.javastudy.redis.event.presentation;
 
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
-import me.kbh.javastudy.redis.service.EventCountService;
+import me.kbh.javastudy.redis.event.service.EventCountService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 

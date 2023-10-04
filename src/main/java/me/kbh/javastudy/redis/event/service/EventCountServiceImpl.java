@@ -1,4 +1,4 @@
-package me.kbh.javastudy.redis.service;
+package me.kbh.javastudy.redis.event.service;
 
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
