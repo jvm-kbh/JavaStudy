@@ -52,7 +52,7 @@ public class ShopTest {
     }
 
     public static List<CompletableFuture<String>> findPricesByExecutor(List<Shop> shopList, String product, Executor executor) {
-        return shopList.stream()
+        return shopList.parallelStream()
                 .map(shop -> CompletableFuture.supplyAsync(() -> shop.getProduct() + " price is " + shop.getPrice(product), executor))
                 .collect(Collectors.toList());
     }
