@@ -1,9 +1,9 @@
 package me.kbh.javastudy.redis.event.service;
 
 public interface EventCountService {
-    void increaseEventPageCount(int pageId);
+  void increaseEventPageCount(int pageId);
 
-    long getEventPageCountById(int pageId);
+  long getEventPageCountById(int pageId);
 
-    long getEventPageCount();
+  long getEventPageCount();
 }

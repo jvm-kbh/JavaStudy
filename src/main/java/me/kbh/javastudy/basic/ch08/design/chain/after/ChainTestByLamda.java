@@ -8,14 +8,14 @@ import java.util.function.Function;
 import java.util.function.UnaryOperator;
 
 public class ChainTestByLamda {
-    public static void main(String[] args) {
-        UnaryOperator<String> headerProcessing = (String input) -> "From Raoul, Mario and Alan: " + input;
-        UnaryOperator<String> spellCheckProcessing = (String input) -> input.replace("labda", "lamda");
+  public static void main(String[] args) {
+    UnaryOperator<String> headerProcessing =
+        (String input) -> "From Raoul, Mario and Alan: " + input;
+    UnaryOperator<String> spellCheckProcessing = (String input) -> input.replace("labda", "lamda");
 
-        Function<String, String> pipeline =
-                headerProcessing.andThen(spellCheckProcessing);
+    Function<String, String> pipeline = headerProcessing.andThen(spellCheckProcessing);
 
-        String result = pipeline.apply("Aren't labdas really sexy?");
-        System.out.println(result);
-    }
+    String result = pipeline.apply("Aren't labdas really sexy?");
+    System.out.println(result);
+  }
 }

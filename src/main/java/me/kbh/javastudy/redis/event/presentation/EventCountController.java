@@ -13,20 +13,20 @@ import org.springframework.web.bind.annotation.*;
 @FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
 public class EventCountController {
 
-    EventCountService eventCountService;
+  EventCountService eventCountService;
 
-    @PostMapping("/{pageId}")
-    public void pushEventPageCount(@PathVariable int pageId){
-        eventCountService.increaseEventPageCount(pageId);
-    }
+  @PostMapping("/{pageId}")
+  public void pushEventPageCount(@PathVariable int pageId) {
+    eventCountService.increaseEventPageCount(pageId);
+  }
 
-    @GetMapping("/{pageId}")
-    public ResponseEntity<Long> byId(@PathVariable int pageId){
-        return ResponseEntity.ok(eventCountService.getEventPageCountById(pageId));
-    }
+  @GetMapping("/{pageId}")
+  public ResponseEntity<Long> byId(@PathVariable int pageId) {
+    return ResponseEntity.ok(eventCountService.getEventPageCountById(pageId));
+  }
 
-    @GetMapping("")
-    public ResponseEntity<Long> allCount(){
-        return ResponseEntity.ok(eventCountService.getEventPageCount());
-    }
+  @GetMapping("")
+  public ResponseEntity<Long> allCount() {
+    return ResponseEntity.ok(eventCountService.getEventPageCount());
+  }
 }

@@ -5,9 +5,9 @@ import java.util.concurrent.RecursiveTask;
 
 public class DifficultForkJoinPool {
     static class SumTask extends RecursiveTask<Integer> {
-        private int[] array;
-        private int start;
-        private int end;
+        private final int[] array;
+        private final int start;
+        private final int end;
 
         public SumTask(int[] array, int start, int end) {
             this.array = array;

@@ -13,17 +13,17 @@ import org.springframework.web.bind.annotation.*;
 @FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
 public class CartController {
 
-    CartService cartService;
+  CartService cartService;
 
+  @PostMapping("")
+  public ResponseEntity<Void> save() {
+    cartService.save();
+    return ResponseEntity.ok().build();
+  }
 
-    @PostMapping("")
-    public ResponseEntity<Void> save(){
-        cartService.save();
-        return ResponseEntity.ok().build();
-    }
-    @PutMapping("")
-    public ResponseEntity<Void> update(){
-        cartService.update();
-        return ResponseEntity.ok().build();
-    }
+  @PutMapping("")
+  public ResponseEntity<Void> update() {
+    cartService.update();
+    return ResponseEntity.ok().build();
+  }
 }

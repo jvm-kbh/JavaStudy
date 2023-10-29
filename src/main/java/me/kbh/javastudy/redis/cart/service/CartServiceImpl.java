@@ -15,44 +15,38 @@ import org.springframework.stereotype.Service;
 @FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
 public class CartServiceImpl implements CartService {
 
-    RedisTemplate<String, String> redisTemplateForCart;
-    ObjectMapper objectMapper;
+  RedisTemplate<String, String> redisTemplateForCart;
+  ObjectMapper objectMapper;
 
-    public void save() {
-        String serializeString = "";
+  public void save() {
+    String serializeString = "";
 
-        Cart cart = Cart.builder()
-                .cartId(1L)
-                .userId(1L)
-                .productId(1L)
-                .build();
+    Cart cart = Cart.builder().cartId(1L).userId(1L).productId(1L).build();
 
-        try {
-            serializeString = objectMapper.writeValueAsString(cart);
-        } catch (JsonProcessingException e) {
-            throw new RuntimeException(e);
-        }
-
-        String keyProductInCartByUserId = CartUtil.getKeyProductInCartByUserId(1L, 1L);
-        redisTemplateForCart.opsForValue().set(keyProductInCartByUserId, serializeString);
-        redisTemplateForCart.opsForValue().set("1:cart", "김보훈");
+    try {
+      serializeString = objectMapper.writeValueAsString(cart);
+    } catch (JsonProcessingException e) {
+      throw new RuntimeException(e);
     }
 
-    @Override
-    public void update() {
-        String keyProductInCartByUserId = CartUtil.getKeyProductInCartByUserId(1L, 1L);
-        try {
-            Cart cart = objectMapper.readValue(redisTemplateForCart.opsForValue().get(keyProductInCartByUserId), Cart.class);
-            Cart newCart = Cart.builder()
-                    .cartId(1)
-                    .userId(1)
-                    .productId(2)
-                    .build();
-            redisTemplateForCart.opsForValue().set(keyProductInCartByUserId, objectMapper.writeValueAsString(newCart));
-        } catch (JsonProcessingException e) {
-            throw new RuntimeException(e);
-        }
+    String keyProductInCartByUserId = CartUtil.getKeyProductInCartByUserId(1L, 1L);
+    redisTemplateForCart.opsForValue().set(keyProductInCartByUserId, serializeString);
+    redisTemplateForCart.opsForValue().set("1:cart", "김보훈");
+  }
 
-
+  @Override
+  public void update() {
+    String keyProductInCartByUserId = CartUtil.getKeyProductInCartByUserId(1L, 1L);
+    try {
+      Cart cart =
+          objectMapper.readValue(
+              redisTemplateForCart.opsForValue().get(keyProductInCartByUserId), Cart.class);
+      Cart newCart = Cart.builder().cartId(1).userId(1).productId(2).build();
+      redisTemplateForCart
+          .opsForValue()
+          .set(keyProductInCartByUserId, objectMapper.writeValueAsString(newCart));
+    } catch (JsonProcessingException e) {
+      throw new RuntimeException(e);
     }
+  }
 }

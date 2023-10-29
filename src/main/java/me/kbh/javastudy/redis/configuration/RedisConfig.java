@@ -18,25 +18,26 @@ import org.springframework.data.redis.serializer.Jackson2JsonRedisSerializer;
 @EnableRedisRepositories
 public class RedisConfig {
 
-    private final RedisProperties redisProperties;
+  private final RedisProperties redisProperties;
 
-    @Bean
-    public RedisConnectionFactory redisConnectionFactory() {
-        return new LettuceConnectionFactory(redisProperties.getHost(),redisProperties.getPort());
-    }
+  @Bean
+  public RedisConnectionFactory redisConnectionFactory() {
+    return new LettuceConnectionFactory(redisProperties.getHost(), redisProperties.getPort());
+  }
 
-    @Bean
-    public RedisTemplate<String, Object> redisTemplate() {
-        RedisTemplate<String, Object> redisTemplate = new RedisTemplate<>();
-        redisTemplate.setConnectionFactory(redisConnectionFactory());
+  @Bean
+  public RedisTemplate<String, Object> redisTemplate() {
+    RedisTemplate<String, Object> redisTemplate = new RedisTemplate<>();
+    redisTemplate.setConnectionFactory(redisConnectionFactory());
 
-        Jackson2JsonRedisSerializer<Object> jsonRedisSerializer = new Jackson2JsonRedisSerializer<>(Object.class);
-        ObjectMapper objectMapper = new ObjectMapper();
-        objectMapper.setVisibility(PropertyAccessor.ALL, JsonAutoDetect.Visibility.ANY);
-        jsonRedisSerializer.setObjectMapper(objectMapper);
+    Jackson2JsonRedisSerializer<Object> jsonRedisSerializer =
+        new Jackson2JsonRedisSerializer<>(Object.class);
+    ObjectMapper objectMapper = new ObjectMapper();
+    objectMapper.setVisibility(PropertyAccessor.ALL, JsonAutoDetect.Visibility.ANY);
+    jsonRedisSerializer.setObjectMapper(objectMapper);
 
-        redisTemplate.setDefaultSerializer(jsonRedisSerializer);
+    redisTemplate.setDefaultSerializer(jsonRedisSerializer);
 
-        return redisTemplate;
-    }
+    return redisTemplate;
+  }
 }

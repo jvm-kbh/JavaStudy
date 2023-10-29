@@ -12,7 +12,7 @@ import java.io.Serializable;
 @ToString
 @EqualsAndHashCode
 public class Cart implements Serializable {
-    public long cartId;
-    public long userId;
-    public long productId;
+  public long cartId;
+  public long userId;
+  public long productId;
 }

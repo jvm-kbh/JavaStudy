@@ -16,12 +16,11 @@ import org.springframework.web.bind.annotation.RestController;
 @FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
 public class LikeController {
 
-    LikeService likeService;
+  LikeService likeService;
 
-    @PostMapping("/user/{userId}/post/{postId}")
-    public ResponseEntity<Void> save(@PathVariable long userId,
-                                     @PathVariable long postId) {
-        likeService.save(userId, postId);
-        return ResponseEntity.ok().build();
-    }
+  @PostMapping("/user/{userId}/post/{postId}")
+  public ResponseEntity<Void> save(@PathVariable long userId, @PathVariable long postId) {
+    likeService.save(userId, postId);
+    return ResponseEntity.ok().build();
+  }
 }
